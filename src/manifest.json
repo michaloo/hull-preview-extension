@@ -11,7 +11,11 @@
   "content_scripts": [
     {
       "matches": ["file://**/*/test.html", "https://*.salesforce.com/*"],
-      "js": ["hull-preview-main.js"]
+      "js": [
+        "scripts/on-ready.js",
+        "scripts/get-ident.js", "scripts/get-token.js", "scripts/encode-ident.js", "scripts/inject-iframe.js",
+        "scripts/main.js"
+      ]
     }
   ],
   "permissions": [
