@@ -17,7 +17,7 @@
         "https://app.hubspot.com/sales/*"
       ],
       "js": [
-        "scripts/on-ready.js", "scripts/get-connector-url.js",
+        "scripts/get-connector-url.js",
         "scripts/get-ident.js", "scripts/get-token.js", "scripts/encode-ident.js", "scripts/inject-iframe.js",
         "scripts/main.js"
       ]
@@ -28,8 +28,16 @@
     "https://ajax.googleapis.com/",
     "https://dd04rofzygnm0.cloudfront.net/",
     "https://hullbeta.io/",
-    "https://hullapp.io/"
+    "https://hullapp.io/",
+    "contextMenus"
   ],
+  "background": {
+    "scripts": [
+      "scripts/get-connector-url.js",
+      "scripts/get-token.js", "scripts/encode-ident.js", "scripts/inject-iframe.js",
+      "scripts/background.js"
+    ]
+  },
   "web_accessible_resources": [
     "vendor/hull.js"
   ]
