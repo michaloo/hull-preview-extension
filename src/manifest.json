@@ -10,7 +10,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["file://**/*/test.html", "https://*.salesforce.com/*"],
+      "matches": [
+        "file://**/*/test.html",
+        "https://*.salesforce.com/*",
+        "https://*.admin.mailchimp.com/lists/members/*",
+        "https://app.hubspot.com/sales/*"
+      ],
       "js": [
         "scripts/on-ready.js", "scripts/get-connector-url.js",
         "scripts/get-ident.js", "scripts/get-token.js", "scripts/encode-ident.js", "scripts/inject-iframe.js",

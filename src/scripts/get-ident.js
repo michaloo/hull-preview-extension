@@ -3,13 +3,23 @@ function getIdent() {
 
   // Salesforce Leads
   try {
-    ident.email = document.querySelectorAll('.detailList [href*="mailto:"')[0].text;
+    ident.email = document.querySelector('.detailList [href*="mailto:"').text;
   } catch (e) {}
 
+  // Salesforce Opportunities
+  try {
+    ident.email = document.querySelector('.listRelatedObject.contactBlock [href*="mailto:"').text;
+  } catch (e) {}
 
-  // Next service to integrate with
-  // try {
-  //   ident.email = document.querySelectorAll('.detailList [href*="mailto:"')[0].text;
-  // } catch (e) {}
+  // Mailchimp
+  try {
+    ident.email = document.querySelector('#content .lastGroup h4').innerText;
+  } catch (e) {}
+
+  // Hubspot
+  try {
+    ident.email = document.querySelector('[data-field="email"]').value;
+  } catch(e) {}
+
   return ident;
 }
