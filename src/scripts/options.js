@@ -5,14 +5,17 @@ function onSwitch(event) {
 	});
 }
 
-function onTokenChange(event) {
-	var token = event.target.value;
-	chrome.storage.sync.set({ token: token }, function() {
-		console.debug(`Options saved: token=${token}`);
-	});
+function onTextChange(key) {
+	return function saveToStorage(event) {
+		var value = event.target.value;
+		chrome.storage.sync.set({ [key]: value }, function() {
+			console.debug(`Options saved: ${key}=${value}`);
+		});
+	}
 }
 
 window.onload = function() {
-	document.getElementById("token").addEventListener("change", onTokenChange);
 	document.getElementById("switch").addEventListener("change", onSwitch); 
+	document.getElementById("token").addEventListener("change", onTextChange("token"));
+	document.getElementById("host").addEventListener("change", onTextChange("host"));
 }
