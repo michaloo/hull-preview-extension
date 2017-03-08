@@ -1,9 +1,9 @@
 onReady(function() {
   var token = getToken();
   var ident = getIdent();
-  var connectorUrl = "https://hull-preview.eu.ngrok.io";
+  var connectorUrl = getConnectorUrl();
 
-  if (!ident) {
+  if (JSON.stringify(ident) === "{}") {
     return;
   }
 
