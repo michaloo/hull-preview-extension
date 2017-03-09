@@ -1,21 +1,26 @@
 var loaded = false;
 
 function init() {
-  var token = getToken();
-  var ident = getIdent();
-  var connectorUrl = getConnectorUrl();
+  Promise.all([
+  	getToken(),
+  	getIdent(),
+  	getConnectorUrl()
+  ]).then(function(input) {
+  	var token = input[0];
+  	var ident = input[1];
+  	var connectorUrl = input[2];
 
-  if (JSON.stringify(ident) === "{}") {
-    return false;
-  }
+  	if (!token || !connectorUrl || JSON.stringify(ident) === "{}") {
+    	return false;
+  	}
 
-  ident = encodeIdent(ident);
+  	ident = encodeIdent(ident);
 
-  injectIframe(connectorUrl + "/preview?hullToken=" + token + "&ident=" + ident);
+  	injectIframe(connectorUrl + "/preview?hullToken=" + token + "&ident=" + ident);
 
-  return true;
+  	return true;
+  })
 }
-
 
 function checkInit(count) {
   if (loaded || count > 20) {
