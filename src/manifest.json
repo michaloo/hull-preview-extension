@@ -6,7 +6,10 @@
   "version": "1.0",
   "browser_action": {
     "default_icon": "icon.ico",
-    "default_popup": "options.html"
+    "_default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html"
   },
   "content_scripts": [
     {
@@ -23,13 +26,16 @@
         "scripts/get-switch.js",
         "scripts/encode-ident.js",
         "scripts/inject-iframe.js",
-        "scripts/main.js"
-      ]
+        "scripts/init.js",
+        "scripts/content.js"
+      ],
+      "run_at": "document_end"
     }
   ],
   "permissions": [
     "activeTab",
     "storage",
+    "webNavigation",
     "https://ajax.googleapis.com/",
     "https://dd04rofzygnm0.cloudfront.net/",
     "https://hullbeta.io/",
@@ -42,8 +48,5 @@
       "scripts/get-token.js", "scripts/encode-ident.js", "scripts/inject-iframe.js",
       "scripts/background.js"
     ]
-  },
-  "web_accessible_resources": [
-    "vendor/hull.js"
-  ]
+  }
 }
