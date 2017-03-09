@@ -2,15 +2,17 @@ var loaded = false;
 
 function init() {
   Promise.all([
+  	getSwitch(),
   	getToken(),
   	getIdent(),
   	getConnectorUrl()
   ]).then(function(input) {
-  	var token = input[0];
-  	var ident = input[1];
-  	var connectorUrl = input[2];
+  	var switchEnabled = input[0];
+  	var token = input[1];
+  	var ident = input[2];
+  	var connectorUrl = input[3];
 
-  	if (!token || !connectorUrl || JSON.stringify(ident) === "{}") {
+  	if (!switchEnabled || !token || !connectorUrl || JSON.stringify(ident) === "{}") {
     	return false;
   	}
 

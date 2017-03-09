@@ -18,7 +18,11 @@
       ],
       "js": [
         "scripts/get-connector-url.js",
-        "scripts/get-ident.js", "scripts/get-token.js", "scripts/encode-ident.js", "scripts/inject-iframe.js",
+        "scripts/get-ident.js",
+        "scripts/get-token.js",
+        "scripts/get-switch.js",
+        "scripts/encode-ident.js",
+        "scripts/inject-iframe.js",
         "scripts/main.js"
       ]
     }

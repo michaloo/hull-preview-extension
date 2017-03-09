@@ -1,3 +1,8 @@
+
+body {
+  min-width: 300px;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -55,4 +60,11 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 8px 16px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
