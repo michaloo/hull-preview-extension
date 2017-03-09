@@ -22,8 +22,8 @@ window.onload = function() {
 	  	getConnectorUrl()
 	]).then(function(input, err) {
 	  	var switchEnabled = input[0];
-	  	var token = input[1];
-	  	var connectorUrl = input[2];
+	  	var token = input[1] || "";
+	  	var connectorUrl = input[2] || "";
 
 	  	console.log(switchEnabled, token, connectorUrl);
 
