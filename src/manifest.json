@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Hull Preview Extenstion",
+  "name": "Hull Preview Extension",
   "description": "Use that extension to preview Hull User details on a set of supported services",
   "version": "1.0",
   "browser_action": {

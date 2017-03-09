@@ -3,6 +3,19 @@ body {
   min-width: 300px;
 }
 
+div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+label {
+  margin: auto;
+  font-weight: bold;
+  display: block;
+  width: 100px;
+  float: left;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
