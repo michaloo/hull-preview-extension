@@ -14,22 +14,20 @@
   "content_scripts": [
     {
       "matches": [
-        "file://**/*/test.html",
-        "https://*.salesforce.com/*",
-        "https://*.admin.mailchimp.com/lists/members/*",
-        "https://app.hubspot.com/sales/*"
+        "<all_urls>"
       ],
       "js": [
         "scripts/get-connector-url.js",
-        "scripts/get-ident.js",
         "scripts/get-token.js",
-        "scripts/get-switch.js",
         "scripts/encode-ident.js",
-        "scripts/inject-iframe.js",
-        "scripts/init.js",
+        "scripts/load-iframe.js",
+        "scripts/inject-sidebar.js",
         "scripts/content.js"
       ],
-      "run_at": "document_end"
+      "run_at": "document_end",
+      "css": [
+        "sidebar.css"
+      ]
     }
   ],
   "permissions": [
@@ -44,8 +42,6 @@
   ],
   "background": {
     "scripts": [
-      "scripts/get-connector-url.js",
-      "scripts/get-token.js", "scripts/encode-ident.js", "scripts/inject-iframe.js",
       "scripts/background.js"
     ]
   }
