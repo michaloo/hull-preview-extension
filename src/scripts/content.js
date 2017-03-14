@@ -20,7 +20,9 @@ function loadIdent(newIdent) {
 }
 
 function toggleSidebar(show) {
-  var shown = document.getElementById("hull-preview").style.display === "block";
+  var shown = document.getElementById("hull-preview") ?
+    document.getElementById("hull-preview").style.display === "block"
+    : false;
   if ((shown && show !== true) || show === false) {
     shown = false;
     return document.getElementById("hull-preview").style.display = "none";
@@ -51,4 +53,9 @@ window.addEventListener("load", function() {
         toggleSidebar(loaded ? true : undefined);
       }
   });
+
+  var event = document.createEvent("CustomEvent");
+  event.initCustomEvent("hull-preview-init", true, true, {});
+  document.dispatchEvent(event);
+
 }, false);

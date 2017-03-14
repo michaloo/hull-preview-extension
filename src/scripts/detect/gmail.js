@@ -14,5 +14,6 @@ function detectGmail() {
   }
 }
 
-window.addEventListener("hashchange", detectGmail, false);
-window.addEventListener("load", detectGmail, false);
+document.addEventListener("hull-preview-init", function() {
+  window.addEventListener("hashchange", detectGmail, false);
+}, false);

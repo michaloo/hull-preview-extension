@@ -12,4 +12,4 @@ function detectSalesforce() {
   } catch (e) {}
 }
 
-window.addEventListener("load", detectSalesforce, false);
+document.addEventListener("hull-preview-init", detectSalesforce, false);
