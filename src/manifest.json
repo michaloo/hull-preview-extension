@@ -28,6 +28,21 @@
       "css": [
         "sidebar.css"
       ]
+    },
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["scripts/detect/gmail.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://*.salesforce.com/*"],
+      "js": ["scripts/detect/salesforce.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://app.hubspot.com/*"],
+      "js": ["scripts/detect/hubspot.js"],
+      "run_at": "document_end"
     }
   ],
   "permissions": [

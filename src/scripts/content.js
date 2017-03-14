@@ -1,20 +1,27 @@
-var shown = false;
+var actualIdent = {};
+
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
 
 function loadIdent(newIdent) {
+  if (JSON.stringify(newIdent) === JSON.stringify(actualIdent)) {
+    return false;
+  }
+  actualIdent = newIdent;
 
-  return Promise.all([
-    getToken(),
-    getConnectorUrl()
-  ]).then(function(input, err) {
-    var token = input[0];
-    var connectorUrl = input[1];
-    var encodedIdent = encodeIdent(newIdent);
-    loadIframe(connectorUrl + "/preview?key=" + token + "&ident=" + encodedIdent);
-  });
+  getConnectorUrl()
+    .then(function(connectorUrl) {
+      var encodedIdent = encodeIdent(newIdent);
+      loadIframe(connectorUrl + "&ident=" + encodedIdent);
+    });
+  return true;
 }
 
 function toggleSidebar(show) {
-  if (shown && show !== true) {
+  var shown = document.getElementById("hull-preview").style.display === "block";
+  if ((shown && show !== true) || show === false) {
     shown = false;
     return document.getElementById("hull-preview").style.display = "none";
   }
@@ -23,7 +30,7 @@ function toggleSidebar(show) {
   return document.getElementById("hull-preview").style.display = "block";
 }
 
-window.onload = function() {
+window.addEventListener("load", function() {
   injectSidebar();
   chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
@@ -36,4 +43,12 @@ window.onload = function() {
         toggleSidebar(request.toggle);
       }
   });
-}
+
+  document.addEventListener('mouseup',function(event) {
+      var sel = window.getSelection().toString().trim();
+      if (sel.length && validateEmail(sel)) {
+        var loaded = loadIdent({ email: sel });
+        toggleSidebar(loaded ? true : undefined);
+      }
+  });
+}, false);

@@ -10,17 +10,11 @@ function onTextChange(key) {
 window.onload = function() {
   console.log("onload");
   Promise.all([
-      getToken(),
       getConnectorUrl()
   ]).then(function(input, err) {
-      var token = input[0] || "";
-      var connectorUrl = input[1] || "";
-
-      console.log(token, connectorUrl);
-      document.getElementById("token").value = token;
-      document.getElementById("host").value = connectorUrl;
+      var connectorUrl = input[0] || "";
+      document.getElementById("url").value = connectorUrl;
   });
 
-  document.getElementById("token").addEventListener("change", onTextChange("token"));
-  document.getElementById("host").addEventListener("change", onTextChange("host"));
+  document.getElementById("url").addEventListener("change", onTextChange("url"));
 }

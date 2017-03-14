@@ -1,7 +1,7 @@
 function getConnectorUrl() {
   return new Promise(function(resolve, reject) {
-    chrome.storage.sync.get("host", function(items) {
-      resolve(items.host);
+    chrome.storage.sync.get("url", function(items) {
+      resolve(items.url);
     });
   });
 }
