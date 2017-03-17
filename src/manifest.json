@@ -3,7 +3,7 @@
 
   "name": "Hull Preview Extension",
   "description": "Use that extension to preview Hull User details on a set of supported services",
-  "version": "1.0",
+  "version": "1.2",
   "browser_action": {
     "default_icon": "icon.ico",
     "_default_popup": "popup.html"
@@ -42,6 +42,15 @@
     {
       "matches": ["https://app.hubspot.com/*"],
       "js": ["scripts/detect/hubspot.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://hull-preview.eu.ngrok.io/install*",
+        "https://hull-preview-staging.herokuapp.com/install*",
+        "https://hull-preview.herokuapp.com/install*"
+      ],
+      "js": ["scripts/install.js"],
       "run_at": "document_end"
     }
   ],
